@@ -1,0 +1,38 @@
+version: "3"
+services:
+  processmaker:
+    image: sermajid/processmaker:latest
+    ports:
+      - "8001:80"
+    volumes:
+      - proceessmaker_data:/opt/processmaker
+    
+  mariadb:
+    image: linuxserver/mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+      PUID: 1000
+      PGID: 1000
+    ports:
+      - "3306:3306"
+    volumes:
+      - myqsl:/config
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+volumes:
+  proceessmaker_data:
+  myqsl:
