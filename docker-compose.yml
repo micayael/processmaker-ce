@@ -5,7 +5,7 @@ services:
     ports:
       - "8001:80"
     volumes:
-      - proceessmaker_data:/opt/processmaker
+      - processmaker_data:/opt/processmaker
     
   mariadb:
     image: linuxserver/mariadb
@@ -19,7 +19,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - myqsl:/config
+      - mariadb_data:/config
 
 
   phpmyadmin:
@@ -30,9 +30,9 @@ services:
       PMA_HOST: mariadb
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
-    restart: always
     ports:
       - 8081:80
+
 volumes:
-  proceessmaker_data:
-  myqsl:
+  processmaker_data:
+  mariadb_data:
