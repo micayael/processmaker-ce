@@ -20,10 +20,18 @@ docker-compose down
 # Para revisar los logs
 docker-compose logs -f
 
+processmaker-config
+-------------------
+
+Host Name: 172.17.0.1
+Port: 3316
+Username: root
+Password: mypassword
+
 phpmyadmin
 ----------
 
-url: http://localhost:8081
+url: http://localhost:8281
 host: mariadb
 user: root
 password: mypassword
@@ -32,7 +40,7 @@ database: wf_workflow
 processmaker
 ------------
 
-url: http://localhost:8001/
+url: http://localhost:8201/
 user: admin
 password: admin
 workspace: workflow

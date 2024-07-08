@@ -3,7 +3,7 @@ services:
   processmaker:
     image: sermajid/processmaker:latest
     ports:
-      - "8001:80"
+      - "8201:80"
     volumes:
       - processmaker_data:/opt/processmaker
     
@@ -17,7 +17,7 @@ services:
       PUID: 1000
       PGID: 1000
     ports:
-      - "3306:3306"
+      - "3316:3306"
     volumes:
       - mariadb_data:/config
 
@@ -31,7 +31,7 @@ services:
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     ports:
-      - 8081:80
+      - 8281:80
 
 volumes:
   processmaker_data:
